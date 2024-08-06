@@ -1,0 +1,88 @@
+---
+title: "day2b-exercises"
+author: "Takeen Shamloo"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+# Section 1: Equation 1 ----
+
+```{r}
+# Load Packages ----
+library(tidyverse)
+
+# Define function ----
+eq1 <- function(x) {
+  3 * x^2 + 4
+}
+
+# Create a data frame with a range of values from 1 to 100 ----
+myDataRange <- data.frame(x = c(1,100))
+
+# plot function as a continuous curve over our specified range of values in our df ----
+ggplot(myDataRange, aes(x = x)) +
+  geom_function(fun = eq1) +
+  labs(title = "f(x) = (3 * x^2 + 4) from x = 1 to 100")
+```
+# Section 2: Equation 2 ----
+
+```{r}
+# Define function ----
+eq2 <- function(x) {
+  24 - 5 * x^3 + 21 * x^2
+}
+
+# Create a data frame with the value range of -50 to 50 for our plot ----
+myDataRangeEQ2 <- data.frame(x = c(-50, 50))
+
+# Plot for equation 2 ----
+ggplot(myDataRangeEQ2, aes(x = x)) +
+  geom_function(fun = eq2) +
+  labs(title = "f(x) = 24 - (5 * x^3) + (21 * x^2) from x = -50 to 50")
+```
+
+# Section 3: Equation 3 ----
+
+```{r}
+# Create function C(t) as our equation 3 ----
+ct <- function(t){
+  t^3
+}
+
+# Derivative of C(t) ----
+dcDt <- D(expression(t^3), name = "t")
+
+# Store derivative as a function ----
+dcDtFun <- function(t) {
+  3 * t^2
+}
+
+# df of values ----
+myDataRangeCt <- data.frame(t = c(-5,5))
+
+# Plot function C(t) ----
+ggplot(myDataRangeCt, aes(x = t)) +
+  geom_function(fun = ct, color = "red") +
+  geom_function(fun = dcDtFun, color = "blue") +
+  labs(title = "C(t) = t^3 from x = -5 to 5")
+```
+
+# Section 4: Partial Derivatives ----
+
+```{r}
+# initial expression for partial derivation ----
+fXYZ <- expression(2 * x * y - 2 * x^2 * z^3)
+
+# partial with respect to x ----
+dfDx <- D(fXYZ, "x")
+
+# partial with respect to y ----
+dfDy <- D(fXYZ, "y")
+
+# partial with respect to z ----
+dfDz <- D(fXYZ, "z")
+```
+
+
+
